@@ -9,12 +9,12 @@ from rl.agents.dqn import DQNAgent
 from rl.policy import BoltzmannQPolicy
 from rl.memory import SequentialMemory
 
-ENV_NAME = 'MountainCar-v0'
+ENV_NAME = 'Acrobot-v1'
 gym.undo_logger_setup()
 
 # Get the environment and extract the number of actions.
 env = gym.make(ENV_NAME)
-np.random.seed(98)
+np.random.seed(76)
 env.seed(33)
 
 #nb_actions = env.action_space.shape[0]
@@ -44,10 +44,11 @@ dqn.compile(Adam(lr=1e-3), metrics=['mae'])
 # Okay, now it's time to learn something! We visualize the training here for show, but this
 # slows down training quite a lot. You can always safely abort the training prematurely using
 # Ctrl + C.
-dqn.fit(env, nb_steps=100000, visualize=True, verbose=2, nb_max_episode_steps=600)
+#dqn.fit(env, nb_steps=50000, visualize=True, verbose=2, nb_max_episode_steps=200)
+dqn.fit(env, nb_steps=300000, visualize=True, verbose=2, nb_max_episode_steps=500)
 
 # After training is done, we save the final weights.
 dqn.save_weights('dqn_{}_weights.h5f'.format(ENV_NAME), overwrite=True)
 
 # Finally, evaluate our algorithm for 5 episodes.
-dqn.test(env, nb_episodes=5, visualize=True,nb_max_episode_steps=600)
+dqn.test(env, nb_episodes=5, visualize=True,nb_max_episode_steps=500)
