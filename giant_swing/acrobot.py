@@ -166,10 +166,6 @@ class AcrobotEnv(core.Env):
         self.state = ns
         terminal = self._terminal()
 
-#        reward =  self.get_rewardAA(th1, th2, dth1)
-#        reward += - 3.0 if math.fabs( th2 ) > 1.4 else 0.0
-#        reward +=  3.0 if terminal else 0.0
-
         dd = torque * dth2
 
         if dd > 0:
@@ -178,7 +174,6 @@ class AcrobotEnv(core.Env):
            cc = -1.0
         else:
            cc = 0.0
-        
 
         reward = cc - 0.07 * math.fabs( dth2 )
         reward += - 0.2 if th2 > 1.4 else 0.0
@@ -218,11 +213,6 @@ class AcrobotEnv(core.Env):
         theta2 = s[1]
         dtheta1 = s[2]
         dtheta2 = s[3]
-
-  #      tt11 = -3.0 if ( theta2 - 0.7 ) > 0.0 else 0.0
-   #     tt22 = 3.0 if ( theta2 + 0.7 ) < 0.0 else 0.0
-
-#        a += tt11 + tt22 - 0.06 * dtheta2
 
         d1 = m1 * lc1 ** 2 + m2 * \
             (l1 ** 2 + lc2 ** 2 + 2 * l1 * lc2 * np.cos(theta2)) + I1 + I2
