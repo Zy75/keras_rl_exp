@@ -10,10 +10,15 @@ I changed DDPG version in some points. Which is, I disretized action space and s
 
 Replace gym file.( pendulum.py )
 
-usage: python dqn_pendulum.py
+Usage: python dqn_pendulum.py
 
 when using long time steps, change timelimit in gym envs/__init__.py
-## Other directory
+## Other directories
+
+Usage: python dqn_gswing.py
+Usage: python dqn_mountain_car.py
+
+Replace gym file.
 
 
 
